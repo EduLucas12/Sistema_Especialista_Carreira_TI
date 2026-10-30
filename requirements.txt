@@ -1,0 +1,5 @@
+# Python 3.10+
+pandas>=2.0
+streamlit>=1.30      # Fase 4
+plotly>=5.18         # Fase 4 (gráficos de radar/barras)
+pytest>=8.0          # Fase 5 (e validação da base na Fase 1)

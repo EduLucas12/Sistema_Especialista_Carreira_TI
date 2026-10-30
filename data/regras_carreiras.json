@@ -1,0 +1,817 @@
+{
+  "metadados": {
+    "nome": "Base de Conhecimento - Consultor de Carreiras em TI",
+    "versao": "1.0.0",
+    "fase": 1,
+    "descricao": "Perguntas, pesos de correlação com as 10 trilhas e regras de ajuste (penalidades/bônus). Carregada dinamicamente pelo motor de inferência."
+  },
+  "escala_likert": {
+    "minimo": 1,
+    "maximo": 5,
+    "rotulos": {
+      "1": "Nenhuma afinidade",
+      "2": "Pouca afinidade",
+      "3": "Afinidade moderada",
+      "4": "Boa afinidade",
+      "5": "Muita afinidade"
+    }
+  },
+  "etapas": [
+    {
+      "id": "perfil",
+      "titulo": "Passo 1: Perfil pessoal",
+      "pontua": false
+    },
+    {
+      "id": "afinidades",
+      "titulo": "Passo 2: Afinidades técnicas",
+      "pontua": true,
+      "peso_etapa": 1.0
+    },
+    {
+      "id": "objetivos",
+      "titulo": "Passo 3: Objetivos de carreira",
+      "pontua": true,
+      "peso_etapa": 0.6
+    }
+  ],
+  "perfil": [
+    {
+      "id": "nome",
+      "texto": "Como podemos te chamar?",
+      "tipo": "texto"
+    },
+    {
+      "id": "nivel_experiencia",
+      "texto": "Qual é o seu nível atual em tecnologia?",
+      "tipo": "escolha",
+      "opcoes": [
+        {
+          "valor": "iniciante",
+          "rotulo": "Estou começando do zero"
+        },
+        {
+          "valor": "basico",
+          "rotulo": "Já estudei o básico de programação/TI"
+        },
+        {
+          "valor": "intermediario",
+          "rotulo": "Já fiz projetos pessoais ou acadêmicos"
+        },
+        {
+          "valor": "avancado",
+          "rotulo": "Já tenho experiência profissional ou projetos sólidos"
+        }
+      ]
+    },
+    {
+      "id": "horas_semanais",
+      "texto": "Quantas horas por semana você pode dedicar aos estudos?",
+      "tipo": "numero",
+      "minimo": 1,
+      "maximo": 60
+    }
+  ],
+  "pontuacao": {
+    "formula": "compatibilidade(trilha) = clamp( soma(peso_pergunta * peso_etapa * (resposta-min)/(max-min)) / soma(peso_pergunta * peso_etapa) + soma(ajustes das regras ativas), 0, 1 )",
+    "top_n": 3,
+    "ajuste_maximo_total": 0.5,
+    "limiar_empate_pontos_percentuais": 2.0
+  },
+  "perguntas": [
+    {
+      "id": "matematica",
+      "etapa": "afinidades",
+      "texto": "Gosto de matemática, estatística e raciocínio quantitativo.",
+      "rotulo": "matemática e estatística"
+    },
+    {
+      "id": "programacao",
+      "etapa": "afinidades",
+      "texto": "Gosto de programar e resolver problemas com lógica e algoritmos.",
+      "rotulo": "programação e algoritmos"
+    },
+    {
+      "id": "apis_bancos",
+      "etapa": "afinidades",
+      "texto": "Gosto de trabalhar com lógica de servidor, APIs e bancos de dados.",
+      "rotulo": "APIs e bancos de dados"
+    },
+    {
+      "id": "interfaces_web",
+      "etapa": "afinidades",
+      "texto": "Gosto de construir interfaces web interativas.",
+      "rotulo": "interfaces web"
+    },
+    {
+      "id": "design_visual",
+      "etapa": "afinidades",
+      "texto": "Tenho interesse em design visual: cores, tipografia, layout e estética.",
+      "rotulo": "design visual"
+    },
+    {
+      "id": "experiencia_usuario",
+      "etapa": "afinidades",
+      "texto": "Gosto de pensar em como as pessoas usam produtos e em deixar tudo intuitivo.",
+      "rotulo": "experiência do usuário"
+    },
+    {
+      "id": "infraestrutura",
+      "etapa": "afinidades",
+      "texto": "Tenho afinidade com servidores, redes, sistemas operacionais e infraestrutura.",
+      "rotulo": "infraestrutura e redes"
+    },
+    {
+      "id": "automacao",
+      "etapa": "afinidades",
+      "texto": "Gosto de automatizar tarefas repetitivas com scripts e pipelines.",
+      "rotulo": "automação"
+    },
+    {
+      "id": "arquitetura",
+      "etapa": "afinidades",
+      "texto": "Gosto de projetar a estrutura de sistemas grandes, escaláveis e distribuídos.",
+      "rotulo": "arquitetura de sistemas"
+    },
+    {
+      "id": "analise_dados",
+      "etapa": "afinidades",
+      "texto": "Gosto de explorar dados, encontrar padrões e tirar conclusões.",
+      "rotulo": "análise de dados"
+    },
+    {
+      "id": "machine_learning",
+      "etapa": "afinidades",
+      "texto": "Tenho interesse em machine learning e inteligência artificial.",
+      "rotulo": "machine learning e IA"
+    },
+    {
+      "id": "pipelines_dados",
+      "etapa": "afinidades",
+      "texto": "Gosto de construir estruturas que movem e organizam grandes volumes de dados.",
+      "rotulo": "pipelines de dados"
+    },
+    {
+      "id": "seguranca",
+      "etapa": "afinidades",
+      "texto": "Tenho curiosidade sobre segurança: invasões, vulnerabilidades, criptografia e defesa.",
+      "rotulo": "segurança da informação"
+    },
+    {
+      "id": "mobile",
+      "etapa": "afinidades",
+      "texto": "Tenho interesse em aplicativos de celular e nas particularidades de dispositivos móveis.",
+      "rotulo": "desenvolvimento mobile"
+    },
+    {
+      "id": "qualidade",
+      "etapa": "afinidades",
+      "texto": "Sou detalhista e gosto de encontrar falhas e garantir que tudo funcione.",
+      "rotulo": "qualidade e testes"
+    },
+    {
+      "id": "pressao",
+      "etapa": "afinidades",
+      "texto": "Lido bem com pressão e com resposta a incidentes em produção.",
+      "rotulo": "resposta a incidentes sob pressão"
+    },
+    {
+      "id": "gestao_produto",
+      "etapa": "afinidades",
+      "texto": "Gosto de organizar prioridades, entender o negócio e tomar decisões de produto.",
+      "rotulo": "gestão de produto e negócio"
+    },
+    {
+      "id": "comunicacao",
+      "etapa": "afinidades",
+      "texto": "Me sinto confortável comunicando, negociando e explicando ideias a pessoas não técnicas.",
+      "rotulo": "comunicação"
+    },
+    {
+      "id": "obj_lideranca",
+      "etapa": "objetivos",
+      "texto": "Quero, no futuro, assumir papéis de liderança e coordenação de pessoas.",
+      "rotulo": "liderança"
+    },
+    {
+      "id": "obj_criatividade",
+      "etapa": "objetivos",
+      "texto": "Quero um trabalho em que a criatividade seja parte central do dia a dia.",
+      "rotulo": "criatividade"
+    },
+    {
+      "id": "obj_especializacao",
+      "etapa": "objetivos",
+      "texto": "Quero me aprofundar tecnicamente e me tornar referência em um assunto específico.",
+      "rotulo": "especialização técnica"
+    },
+    {
+      "id": "obj_impacto_negocio",
+      "etapa": "objetivos",
+      "texto": "Quero ver o impacto direto do meu trabalho nos resultados do negócio.",
+      "rotulo": "impacto no negócio"
+    }
+  ],
+  "trilhas": [
+    {
+      "id": "backend",
+      "nome": "Back-end",
+      "descricao": "Constrói a lógica de servidor, APIs, regras de negócio e integração com bancos de dados.",
+      "pesos": {
+        "matematica": 2,
+        "programacao": 9,
+        "apis_bancos": 10,
+        "interfaces_web": 2,
+        "experiencia_usuario": 1,
+        "infraestrutura": 3,
+        "automacao": 3,
+        "arquitetura": 7,
+        "analise_dados": 1,
+        "pipelines_dados": 3,
+        "seguranca": 3,
+        "qualidade": 2,
+        "pressao": 2,
+        "comunicacao": 1,
+        "obj_lideranca": 2,
+        "obj_criatividade": 2,
+        "obj_especializacao": 6,
+        "obj_impacto_negocio": 4
+      }
+    },
+    {
+      "id": "frontend_ux",
+      "nome": "Front-end / UX",
+      "descricao": "Cria interfaces web interativas, acessíveis e agradáveis, unindo código e experiência do usuário.",
+      "pesos": {
+        "programacao": 7,
+        "apis_bancos": 2,
+        "interfaces_web": 10,
+        "design_visual": 8,
+        "experiencia_usuario": 9,
+        "automacao": 1,
+        "arquitetura": 2,
+        "seguranca": 1,
+        "mobile": 2,
+        "qualidade": 2,
+        "pressao": 1,
+        "gestao_produto": 1,
+        "comunicacao": 3,
+        "obj_lideranca": 2,
+        "obj_criatividade": 9,
+        "obj_especializacao": 4,
+        "obj_impacto_negocio": 4
+      }
+    },
+    {
+      "id": "cientista_dados",
+      "nome": "Cientista de Dados",
+      "descricao": "Explora dados, aplica estatística e machine learning para gerar previsões e insights.",
+      "pesos": {
+        "matematica": 9,
+        "programacao": 6,
+        "apis_bancos": 3,
+        "design_visual": 1,
+        "experiencia_usuario": 1,
+        "automacao": 2,
+        "arquitetura": 1,
+        "analise_dados": 10,
+        "machine_learning": 10,
+        "pipelines_dados": 4,
+        "seguranca": 1,
+        "qualidade": 2,
+        "pressao": 1,
+        "gestao_produto": 1,
+        "comunicacao": 3,
+        "obj_lideranca": 2,
+        "obj_criatividade": 5,
+        "obj_especializacao": 8,
+        "obj_impacto_negocio": 6
+      }
+    },
+    {
+      "id": "engenheiro_dados",
+      "nome": "Engenheiro de Dados",
+      "descricao": "Projeta e mantém pipelines e plataformas que coletam, transformam e entregam dados em escala.",
+      "pesos": {
+        "matematica": 4,
+        "programacao": 8,
+        "apis_bancos": 8,
+        "infraestrutura": 3,
+        "automacao": 5,
+        "arquitetura": 6,
+        "analise_dados": 7,
+        "machine_learning": 4,
+        "pipelines_dados": 10,
+        "seguranca": 1,
+        "qualidade": 2,
+        "pressao": 2,
+        "comunicacao": 1,
+        "obj_lideranca": 2,
+        "obj_criatividade": 2,
+        "obj_especializacao": 7,
+        "obj_impacto_negocio": 4
+      }
+    },
+    {
+      "id": "ciberseguranca",
+      "nome": "Cibersegurança",
+      "descricao": "Protege sistemas e dados: encontra vulnerabilidades, monitora ameaças e responde a incidentes.",
+      "pesos": {
+        "matematica": 4,
+        "programacao": 5,
+        "apis_bancos": 3,
+        "interfaces_web": 1,
+        "infraestrutura": 6,
+        "automacao": 4,
+        "arquitetura": 4,
+        "analise_dados": 3,
+        "machine_learning": 2,
+        "pipelines_dados": 1,
+        "seguranca": 10,
+        "mobile": 1,
+        "qualidade": 4,
+        "pressao": 6,
+        "gestao_produto": 1,
+        "comunicacao": 2,
+        "obj_lideranca": 3,
+        "obj_criatividade": 3,
+        "obj_especializacao": 9,
+        "obj_impacto_negocio": 4
+      }
+    },
+    {
+      "id": "devops_sre",
+      "nome": "DevOps / SRE",
+      "descricao": "Automatiza entrega e operação de software, garantindo confiabilidade, observabilidade e resposta a incidentes.",
+      "pesos": {
+        "matematica": 1,
+        "programacao": 6,
+        "apis_bancos": 3,
+        "infraestrutura": 10,
+        "automacao": 10,
+        "arquitetura": 6,
+        "analise_dados": 1,
+        "pipelines_dados": 4,
+        "seguranca": 5,
+        "qualidade": 3,
+        "pressao": 9,
+        "gestao_produto": 1,
+        "comunicacao": 2,
+        "obj_lideranca": 3,
+        "obj_criatividade": 2,
+        "obj_especializacao": 7,
+        "obj_impacto_negocio": 4
+      }
+    },
+    {
+      "id": "cloud_architecture",
+      "nome": "Cloud Architecture",
+      "descricao": "Desenha arquiteturas escaláveis, seguras e econômicas em nuvem pública.",
+      "pesos": {
+        "matematica": 1,
+        "programacao": 4,
+        "apis_bancos": 4,
+        "infraestrutura": 9,
+        "automacao": 7,
+        "arquitetura": 10,
+        "pipelines_dados": 4,
+        "seguranca": 5,
+        "qualidade": 1,
+        "pressao": 4,
+        "gestao_produto": 2,
+        "comunicacao": 3,
+        "obj_lideranca": 5,
+        "obj_criatividade": 3,
+        "obj_especializacao": 7,
+        "obj_impacto_negocio": 4
+      }
+    },
+    {
+      "id": "mobile",
+      "nome": "Mobile",
+      "descricao": "Desenvolve aplicativos para Android e iOS, cuidando de desempenho e experiência em dispositivos móveis.",
+      "pesos": {
+        "matematica": 1,
+        "programacao": 8,
+        "apis_bancos": 4,
+        "interfaces_web": 3,
+        "design_visual": 6,
+        "experiencia_usuario": 7,
+        "automacao": 1,
+        "arquitetura": 3,
+        "seguranca": 2,
+        "mobile": 10,
+        "qualidade": 2,
+        "pressao": 1,
+        "gestao_produto": 1,
+        "comunicacao": 1,
+        "obj_lideranca": 2,
+        "obj_criatividade": 7,
+        "obj_especializacao": 5,
+        "obj_impacto_negocio": 5
+      }
+    },
+    {
+      "id": "qa",
+      "nome": "QA / Qualidade",
+      "descricao": "Garante a qualidade do software com estratégia de testes, automação e prevenção de defeitos.",
+      "pesos": {
+        "matematica": 1,
+        "programacao": 5,
+        "apis_bancos": 3,
+        "interfaces_web": 3,
+        "design_visual": 1,
+        "experiencia_usuario": 4,
+        "infraestrutura": 1,
+        "automacao": 6,
+        "arquitetura": 1,
+        "analise_dados": 2,
+        "pipelines_dados": 1,
+        "seguranca": 3,
+        "mobile": 1,
+        "qualidade": 10,
+        "pressao": 2,
+        "gestao_produto": 2,
+        "comunicacao": 4,
+        "obj_lideranca": 3,
+        "obj_criatividade": 1,
+        "obj_especializacao": 3,
+        "obj_impacto_negocio": 4
+      }
+    },
+    {
+      "id": "product_management",
+      "nome": "Product Management",
+      "descricao": "Define o que construir e por quê, alinhando usuários, negócio e times técnicos.",
+      "pesos": {
+        "matematica": 2,
+        "programacao": 1,
+        "apis_bancos": 1,
+        "interfaces_web": 2,
+        "design_visual": 3,
+        "experiencia_usuario": 7,
+        "arquitetura": 4,
+        "analise_dados": 5,
+        "machine_learning": 1,
+        "mobile": 1,
+        "qualidade": 2,
+        "pressao": 5,
+        "gestao_produto": 10,
+        "comunicacao": 10,
+        "obj_lideranca": 9,
+        "obj_criatividade": 7,
+        "obj_especializacao": 1,
+        "obj_impacto_negocio": 10
+      }
+    }
+  ],
+  "regras": [
+    {
+      "id": "R01",
+      "tipo": "penalidade",
+      "descricao": "Pouco interesse em design e em experiência do usuário é conflitante com Front-end/UX.",
+      "condicoes": [
+        {
+          "pergunta": "design_visual",
+          "op": "<=",
+          "valor": 2
+        },
+        {
+          "pergunta": "experiencia_usuario",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "frontend_ux": 0.15
+        }
+      }
+    },
+    {
+      "id": "R02",
+      "tipo": "penalidade",
+      "descricao": "Baixa afinidade com matemática dificulta a trilha de Ciência de Dados.",
+      "condicoes": [
+        {
+          "pergunta": "matematica",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "cientista_dados": 0.2
+        }
+      }
+    },
+    {
+      "id": "R03",
+      "tipo": "penalidade",
+      "descricao": "Sem interesse em análise de dados nem em machine learning, Ciência de Dados perde sentido.",
+      "condicoes": [
+        {
+          "pergunta": "analise_dados",
+          "op": "<=",
+          "valor": 2
+        },
+        {
+          "pergunta": "machine_learning",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "cientista_dados": 0.15
+        }
+      }
+    },
+    {
+      "id": "R04",
+      "tipo": "penalidade",
+      "descricao": "Baixa afinidade com programação é conflitante com trilhas que dependem fortemente de código.",
+      "condicoes": [
+        {
+          "pergunta": "programacao",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "backend": 0.2,
+          "mobile": 0.2,
+          "engenheiro_dados": 0.15,
+          "frontend_ux": 0.15,
+          "devops_sre": 0.05
+        }
+      }
+    },
+    {
+      "id": "R05",
+      "tipo": "penalidade",
+      "descricao": "Pouca tolerância a pressão é conflitante com plantões e resposta a incidentes.",
+      "condicoes": [
+        {
+          "pergunta": "pressao",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "devops_sre": 0.15,
+          "ciberseguranca": 0.05
+        }
+      }
+    },
+    {
+      "id": "R06",
+      "tipo": "penalidade",
+      "descricao": "Pouca afinidade com infraestrutura dificulta DevOps/SRE e Cloud.",
+      "condicoes": [
+        {
+          "pergunta": "infraestrutura",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "devops_sre": 0.15,
+          "cloud_architecture": 0.15
+        }
+      }
+    },
+    {
+      "id": "R07",
+      "tipo": "penalidade",
+      "descricao": "Pouco interesse em comunicação e em gestão de produto é conflitante com Product Management.",
+      "condicoes": [
+        {
+          "pergunta": "comunicacao",
+          "op": "<=",
+          "valor": 2
+        },
+        {
+          "pergunta": "gestao_produto",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "product_management": 0.2
+        }
+      }
+    },
+    {
+      "id": "R08",
+      "tipo": "penalidade",
+      "descricao": "Pouco apreço por qualidade e detalhes é conflitante com QA.",
+      "condicoes": [
+        {
+          "pergunta": "qualidade",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "qa": 0.15
+        }
+      }
+    },
+    {
+      "id": "R09",
+      "tipo": "penalidade",
+      "descricao": "Sem curiosidade por segurança, a trilha de Cibersegurança tende a desmotivar.",
+      "condicoes": [
+        {
+          "pergunta": "seguranca",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "ciberseguranca": 0.2
+        }
+      }
+    },
+    {
+      "id": "R10",
+      "tipo": "penalidade",
+      "descricao": "Sem interesse em dispositivos móveis, a trilha Mobile perde aderência.",
+      "condicoes": [
+        {
+          "pergunta": "mobile",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "mobile": 0.15
+        }
+      }
+    },
+    {
+      "id": "R11",
+      "tipo": "penalidade",
+      "descricao": "Pouco interesse em APIs e bancos de dados dificulta Back-end e Engenharia de Dados.",
+      "condicoes": [
+        {
+          "pergunta": "apis_bancos",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "backend": 0.15,
+          "engenheiro_dados": 0.1
+        }
+      }
+    },
+    {
+      "id": "R12",
+      "tipo": "penalidade",
+      "descricao": "Sem interesse em pipelines nem em análise de dados, Engenharia de Dados perde aderência.",
+      "condicoes": [
+        {
+          "pergunta": "pipelines_dados",
+          "op": "<=",
+          "valor": 2
+        },
+        {
+          "pergunta": "analise_dados",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "engenheiro_dados": 0.15
+        }
+      }
+    },
+    {
+      "id": "R13",
+      "tipo": "penalidade",
+      "descricao": "Pouco interesse em arquitetura de sistemas reduz aderência a Cloud Architecture.",
+      "condicoes": [
+        {
+          "pergunta": "arquitetura",
+          "op": "<=",
+          "valor": 2
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "cloud_architecture": 0.1
+        }
+      }
+    },
+    {
+      "id": "R14",
+      "tipo": "bonus",
+      "descricao": "Forte afinidade com infraestrutura e automação reforça DevOps/SRE e Cloud.",
+      "condicoes": [
+        {
+          "pergunta": "infraestrutura",
+          "op": ">=",
+          "valor": 4
+        },
+        {
+          "pergunta": "automacao",
+          "op": ">=",
+          "valor": 4
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "devops_sre": 0.05,
+          "cloud_architecture": 0.03
+        }
+      }
+    },
+    {
+      "id": "R15",
+      "tipo": "bonus",
+      "descricao": "Matemática, análise de dados e machine learning juntos reforçam Ciência de Dados.",
+      "condicoes": [
+        {
+          "pergunta": "matematica",
+          "op": ">=",
+          "valor": 4
+        },
+        {
+          "pergunta": "analise_dados",
+          "op": ">=",
+          "valor": 4
+        },
+        {
+          "pergunta": "machine_learning",
+          "op": ">=",
+          "valor": 4
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "cientista_dados": 0.05
+        }
+      }
+    },
+    {
+      "id": "R16",
+      "tipo": "bonus",
+      "descricao": "Design visual, experiência do usuário e interfaces web juntos reforçam Front-end/UX.",
+      "condicoes": [
+        {
+          "pergunta": "design_visual",
+          "op": ">=",
+          "valor": 4
+        },
+        {
+          "pergunta": "experiencia_usuario",
+          "op": ">=",
+          "valor": 4
+        },
+        {
+          "pergunta": "interfaces_web",
+          "op": ">=",
+          "valor": 4
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "frontend_ux": 0.05
+        }
+      }
+    },
+    {
+      "id": "R17",
+      "tipo": "bonus",
+      "descricao": "Comunicação e gestão de produto fortes reforçam Product Management.",
+      "condicoes": [
+        {
+          "pergunta": "comunicacao",
+          "op": ">=",
+          "valor": 4
+        },
+        {
+          "pergunta": "gestao_produto",
+          "op": ">=",
+          "valor": 4
+        }
+      ],
+      "efeito": {
+        "ajuste_por_trilha": {
+          "product_management": 0.05
+        }
+      }
+    }
+  ]
+}
