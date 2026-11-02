@@ -1,0 +1,2283 @@
+{
+  "metadados": {
+    "nome": "Base de Conhecimento - Habilidades, Certificações e Projetos",
+    "versao": "1.0.0",
+    "fase": 3,
+    "descricao": "Habilidades exigidas para o nível Júnior em cada trilha, certificações e projetos de portfólio. Complementa regras_carreiras.json."
+  },
+  "niveis_habilidade": {
+    "0": "Nunca estudei",
+    "1": "Conheço o básico",
+    "2": "Aplico com autonomia",
+    "3": "Domino"
+  },
+  "prioridades": {
+    "essencial": 3,
+    "importante": 2,
+    "desejavel": 1
+  },
+  "blocos": [
+    {
+      "id": "fundamentos",
+      "titulo": "Fundamentos"
+    },
+    {
+      "id": "ferramentas",
+      "titulo": "Ferramentas e tecnologias"
+    },
+    {
+      "id": "pratica",
+      "titulo": "Prática profissional"
+    }
+  ],
+  "estimativa_por_experiencia": {
+    "iniciante": {
+      "fundamentos": 0,
+      "ferramentas": 0,
+      "pratica": 0
+    },
+    "basico": {
+      "fundamentos": 1,
+      "ferramentas": 0,
+      "pratica": 0
+    },
+    "intermediario": {
+      "fundamentos": 2,
+      "ferramentas": 1,
+      "pratica": 0
+    },
+    "avancado": {
+      "fundamentos": 2,
+      "ferramentas": 2,
+      "pratica": 1
+    }
+  },
+  "prontidao": {
+    "apto": 0.85,
+    "quase_la": 0.65,
+    "em_formacao": 0.35
+  },
+  "boas_praticas_portfolio": [
+    "README com objetivo, tecnologias, como rodar e capturas de tela",
+    "Commits pequenos e com mensagens claras",
+    "Testes ou validações quando fizer sentido",
+    "Projeto publicado (link, deploy ou demonstração em vídeo)",
+    "Seção 'Decisões e aprendizados' explicando o que você faria diferente"
+  ],
+  "trilhas": {
+    "backend": {
+      "habilidades": [
+        {
+          "id": "logica",
+          "nome": "Lógica de programação e algoritmos",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Python",
+            "pseudocódigo",
+            "exercícios (Beecrowd/LeetCode fáceis)"
+          ]
+        },
+        {
+          "id": "estruturas",
+          "nome": "Estruturas de dados básicas",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "logica"
+          ],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "listas",
+            "pilhas e filas",
+            "hash maps",
+            "árvores"
+          ]
+        },
+        {
+          "id": "git",
+          "nome": "Git e GitHub",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 8,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Git",
+            "GitHub",
+            "pull requests"
+          ]
+        },
+        {
+          "id": "linguagem",
+          "nome": "Linguagem back-end",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 30,
+          "pre_requisitos": [
+            "logica"
+          ],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Python",
+            "Java",
+            "C#",
+            "Node.js/TypeScript"
+          ]
+        },
+        {
+          "id": "sql",
+          "nome": "SQL e modelagem relacional",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "logica"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "PostgreSQL",
+            "MySQL",
+            "joins",
+            "normalização"
+          ]
+        },
+        {
+          "id": "http",
+          "nome": "HTTP e APIs REST",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "linguagem"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "HTTP",
+            "REST",
+            "JSON",
+            "Postman"
+          ]
+        },
+        {
+          "id": "framework",
+          "nome": "Framework web",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [
+            "linguagem",
+            "http"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "FastAPI",
+            "Django",
+            "Spring Boot",
+            "Express"
+          ]
+        },
+        {
+          "id": "docker",
+          "nome": "Docker básico",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "git"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Docker",
+            "docker-compose"
+          ]
+        },
+        {
+          "id": "seguranca",
+          "nome": "Autenticação e segurança básica",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "http"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "JWT",
+            "OAuth2",
+            "hash de senhas",
+            "OWASP Top 10"
+          ]
+        },
+        {
+          "id": "testes",
+          "nome": "Testes automatizados",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "linguagem"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "pytest",
+            "JUnit",
+            "testes de API"
+          ]
+        }
+      ],
+      "certificacoes": [
+        {
+          "nome": "AWS Certified Cloud Practitioner",
+          "emissor": "AWS",
+          "min_prontidao": 0.4,
+          "descricao": "Base de nuvem, útil para vagas de back-end em empresas que usam AWS."
+        },
+        {
+          "nome": "Microsoft Azure Fundamentals (AZ-900)",
+          "emissor": "Microsoft",
+          "min_prontidao": 0.4,
+          "descricao": "Fundamentos de nuvem Azure."
+        },
+        {
+          "nome": "Microsoft Azure Developer Associate (AZ-204)",
+          "emissor": "Microsoft",
+          "min_prontidao": 0.8,
+          "descricao": "Desenvolvimento de soluções em Azure; exige boa base de APIs e bancos."
+        }
+      ],
+      "projetos": [
+        {
+          "nome": "API REST de tarefas com autenticação",
+          "dificuldade": 1,
+          "descricao": "CRUD completo com banco relacional, autenticação JWT e documentação Swagger/OpenAPI.",
+          "habilidades": [
+            "linguagem",
+            "http",
+            "sql",
+            "framework",
+            "seguranca"
+          ]
+        },
+        {
+          "nome": "Sistema de pedidos com regras de negócio e testes",
+          "dificuldade": 2,
+          "descricao": "Modelagem relacional, regras de negócio, testes automatizados e cobertura medida.",
+          "habilidades": [
+            "sql",
+            "framework",
+            "testes",
+            "estruturas"
+          ]
+        },
+        {
+          "nome": "Serviço containerizado com CI",
+          "dificuldade": 3,
+          "descricao": "API dockerizada com pipeline de testes no GitHub Actions e deploy em nuvem gratuita.",
+          "habilidades": [
+            "docker",
+            "testes",
+            "git",
+            "framework"
+          ]
+        }
+      ]
+    },
+    "frontend_ux": {
+      "habilidades": [
+        {
+          "id": "html_css",
+          "nome": "HTML e CSS",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "HTML5 semântico",
+            "CSS3",
+            "Flexbox",
+            "Grid"
+          ]
+        },
+        {
+          "id": "js",
+          "nome": "JavaScript",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 30,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "JavaScript ES6+",
+            "DOM",
+            "async/await"
+          ]
+        },
+        {
+          "id": "git",
+          "nome": "Git e GitHub",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 8,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Git",
+            "GitHub",
+            "GitHub Pages"
+          ]
+        },
+        {
+          "id": "ux",
+          "nome": "Fundamentos de UX e usabilidade",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "heurísticas de Nielsen",
+            "personas",
+            "wireframes"
+          ]
+        },
+        {
+          "id": "responsivo",
+          "nome": "Layout responsivo",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "html_css"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "media queries",
+            "mobile-first",
+            "Tailwind",
+            "Bootstrap"
+          ]
+        },
+        {
+          "id": "acessibilidade",
+          "nome": "Acessibilidade web",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 10,
+          "pre_requisitos": [
+            "html_css"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "WCAG",
+            "ARIA",
+            "leitores de tela"
+          ]
+        },
+        {
+          "id": "react",
+          "nome": "Framework de interface",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 30,
+          "pre_requisitos": [
+            "js"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "React",
+            "Vue",
+            "Next.js"
+          ]
+        },
+        {
+          "id": "apis",
+          "nome": "Consumo de APIs",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "js"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "fetch",
+            "Axios",
+            "tratamento de erros"
+          ]
+        },
+        {
+          "id": "figma",
+          "nome": "Prototipação em Figma",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 10,
+          "pre_requisitos": [
+            "ux"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Figma",
+            "componentes",
+            "design tokens"
+          ]
+        },
+        {
+          "id": "typescript",
+          "nome": "TypeScript",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "js"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "TypeScript"
+          ]
+        },
+        {
+          "id": "testes_front",
+          "nome": "Testes de interface",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "react"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "Jest",
+            "Testing Library",
+            "Cypress"
+          ]
+        }
+      ],
+      "certificacoes": [
+        {
+          "nome": "Responsive Web Design",
+          "emissor": "freeCodeCamp",
+          "min_prontidao": 0.2,
+          "descricao": "Certificação gratuita e prática; boa para começar o portfólio."
+        },
+        {
+          "nome": "Meta Front-End Developer Professional Certificate",
+          "emissor": "Meta (Coursera)",
+          "min_prontidao": 0.5,
+          "descricao": "Trilha completa de front-end com React."
+        },
+        {
+          "nome": "Google UX Design Professional Certificate",
+          "emissor": "Google (Coursera)",
+          "min_prontidao": 0.4,
+          "descricao": "Processo de design, pesquisa e prototipação."
+        }
+      ],
+      "projetos": [
+        {
+          "nome": "Landing page responsiva e acessível",
+          "dificuldade": 1,
+          "descricao": "Página sem framework, com layout mobile-first, nota alta no Lighthouse e publicação no GitHub Pages.",
+          "habilidades": [
+            "html_css",
+            "responsivo",
+            "acessibilidade",
+            "git"
+          ]
+        },
+        {
+          "nome": "Painel em React consumindo uma API pública",
+          "dificuldade": 2,
+          "descricao": "Lista, busca, detalhe e tratamento de erros/carregamento com componentes reutilizáveis.",
+          "habilidades": [
+            "js",
+            "react",
+            "apis",
+            "responsivo"
+          ]
+        },
+        {
+          "nome": "Redesign de um app com protótipo e implementação",
+          "dificuldade": 3,
+          "descricao": "Estudo de caso: pesquisa, protótipo no Figma, teste de usabilidade e implementação do fluxo principal.",
+          "habilidades": [
+            "ux",
+            "figma",
+            "react",
+            "acessibilidade"
+          ]
+        }
+      ]
+    },
+    "cientista_dados": {
+      "habilidades": [
+        {
+          "id": "python",
+          "nome": "Python para análise de dados",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Python",
+            "Jupyter",
+            "NumPy"
+          ]
+        },
+        {
+          "id": "estatistica",
+          "nome": "Estatística e probabilidade",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 30,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "média e variância",
+            "distribuições",
+            "testes de hipótese",
+            "regressão"
+          ]
+        },
+        {
+          "id": "sql",
+          "nome": "SQL",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "SQL",
+            "joins",
+            "agregações"
+          ]
+        },
+        {
+          "id": "algebra",
+          "nome": "Álgebra linear e cálculo básico",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "vetores",
+            "matrizes",
+            "derivadas"
+          ]
+        },
+        {
+          "id": "git",
+          "nome": "Git e GitHub",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 8,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Git",
+            "GitHub"
+          ]
+        },
+        {
+          "id": "pandas",
+          "nome": "Manipulação de dados",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "python"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "pandas",
+            "limpeza de dados",
+            "engenharia de atributos"
+          ]
+        },
+        {
+          "id": "visualizacao",
+          "nome": "Visualização de dados",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "pandas"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Matplotlib",
+            "Seaborn",
+            "Plotly"
+          ]
+        },
+        {
+          "id": "ml",
+          "nome": "Machine learning clássico",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 30,
+          "pre_requisitos": [
+            "estatistica",
+            "pandas"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "scikit-learn",
+            "regressão",
+            "classificação",
+            "validação cruzada"
+          ]
+        },
+        {
+          "id": "avaliacao",
+          "nome": "Avaliação e interpretação de modelos",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "ml"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "métricas",
+            "overfitting",
+            "SHAP"
+          ]
+        },
+        {
+          "id": "storytelling",
+          "nome": "Comunicação de resultados",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "visualizacao"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "storytelling com dados",
+            "dashboards",
+            "relatórios"
+          ]
+        },
+        {
+          "id": "deep_learning",
+          "nome": "Deep learning",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [
+            "ml"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "PyTorch",
+            "TensorFlow"
+          ]
+        }
+      ],
+      "certificacoes": [
+        {
+          "nome": "Google Data Analytics Professional Certificate",
+          "emissor": "Google (Coursera)",
+          "min_prontidao": 0.2,
+          "descricao": "Porta de entrada para análise de dados."
+        },
+        {
+          "nome": "IBM Data Science Professional Certificate",
+          "emissor": "IBM (Coursera)",
+          "min_prontidao": 0.4,
+          "descricao": "Python, SQL e machine learning aplicados."
+        },
+        {
+          "nome": "Azure Data Scientist Associate (DP-100)",
+          "emissor": "Microsoft",
+          "min_prontidao": 0.8,
+          "descricao": "Machine learning em nuvem; exige base sólida de modelagem."
+        }
+      ],
+      "projetos": [
+        {
+          "nome": "Análise exploratória de um dataset público",
+          "dificuldade": 1,
+          "descricao": "Notebook com perguntas de negócio, limpeza, gráficos e conclusões (dados.gov.br ou Kaggle).",
+          "habilidades": [
+            "python",
+            "pandas",
+            "visualizacao",
+            "estatistica"
+          ]
+        },
+        {
+          "nome": "Modelo preditivo com pipeline e avaliação",
+          "dificuldade": 2,
+          "descricao": "Pipeline scikit-learn com validação cruzada, comparação de modelos e análise de erros.",
+          "habilidades": [
+            "ml",
+            "avaliacao",
+            "pandas",
+            "estatistica"
+          ]
+        },
+        {
+          "nome": "App Streamlit que publica um modelo",
+          "dificuldade": 3,
+          "descricao": "Aplicação web que recebe dados, roda o modelo e explica o resultado, com README e deploy.",
+          "habilidades": [
+            "ml",
+            "storytelling",
+            "python",
+            "git"
+          ]
+        }
+      ]
+    },
+    "engenheiro_dados": {
+      "habilidades": [
+        {
+          "id": "python",
+          "nome": "Python",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Python",
+            "pandas"
+          ]
+        },
+        {
+          "id": "sql",
+          "nome": "SQL intermediário/avançado",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "window functions",
+            "CTEs",
+            "índices"
+          ]
+        },
+        {
+          "id": "linux",
+          "nome": "Linux e shell",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "terminal",
+            "Bash",
+            "permissões"
+          ]
+        },
+        {
+          "id": "git",
+          "nome": "Git e GitHub",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 8,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Git",
+            "GitHub"
+          ]
+        },
+        {
+          "id": "modelagem",
+          "nome": "Modelagem de dados",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 18,
+          "pre_requisitos": [
+            "sql"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "modelo dimensional",
+            "star schema",
+            "normalização"
+          ]
+        },
+        {
+          "id": "etl",
+          "nome": "Pipelines ETL/ELT",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [
+            "python",
+            "sql"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "pandas",
+            "dbt",
+            "API/CSV para banco"
+          ]
+        },
+        {
+          "id": "spark",
+          "nome": "Processamento distribuído",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [
+            "python",
+            "sql"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "PySpark",
+            "Spark SQL"
+          ]
+        },
+        {
+          "id": "orquestracao",
+          "nome": "Orquestração de pipelines",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 18,
+          "pre_requisitos": [
+            "etl"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Airflow",
+            "Prefect"
+          ]
+        },
+        {
+          "id": "cloud_dados",
+          "nome": "Plataformas de dados em nuvem",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "sql"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "S3/Blob/GCS",
+            "BigQuery",
+            "Redshift",
+            "Databricks"
+          ]
+        },
+        {
+          "id": "docker",
+          "nome": "Docker",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "linux"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "Docker",
+            "docker-compose"
+          ]
+        },
+        {
+          "id": "qualidade",
+          "nome": "Qualidade de dados",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "etl"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "Great Expectations",
+            "testes do dbt"
+          ]
+        }
+      ],
+      "certificacoes": [
+        {
+          "nome": "Azure Data Fundamentals (DP-900)",
+          "emissor": "Microsoft",
+          "min_prontidao": 0.3,
+          "descricao": "Conceitos de dados em nuvem."
+        },
+        {
+          "nome": "Databricks Certified Data Engineer Associate",
+          "emissor": "Databricks",
+          "min_prontidao": 0.6,
+          "descricao": "Pipelines com Spark e Delta Lake."
+        },
+        {
+          "nome": "AWS Certified Data Engineer - Associate",
+          "emissor": "AWS",
+          "min_prontidao": 0.7,
+          "descricao": "Engenharia de dados na AWS."
+        }
+      ],
+      "projetos": [
+        {
+          "nome": "Pipeline ETL de uma API para o PostgreSQL",
+          "dificuldade": 1,
+          "descricao": "Extrai dados de uma API pública, transforma com Python e carrega em tabelas relacionais.",
+          "habilidades": [
+            "python",
+            "sql",
+            "etl",
+            "git"
+          ]
+        },
+        {
+          "nome": "Data warehouse dimensional com dbt",
+          "dificuldade": 2,
+          "descricao": "Modelo estrela, transformações versionadas e testes do dbt sobre dados abertos.",
+          "habilidades": [
+            "modelagem",
+            "sql",
+            "etl",
+            "qualidade"
+          ]
+        },
+        {
+          "nome": "Pipeline orquestrado com Airflow e Docker",
+          "dificuldade": 3,
+          "descricao": "DAG diária com testes de qualidade, containers e documentação de operação.",
+          "habilidades": [
+            "orquestracao",
+            "docker",
+            "etl",
+            "qualidade"
+          ]
+        }
+      ]
+    },
+    "ciberseguranca": {
+      "habilidades": [
+        {
+          "id": "redes",
+          "nome": "Redes de computadores",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 30,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "modelo TCP/IP",
+            "DNS",
+            "firewalls",
+            "VPN"
+          ]
+        },
+        {
+          "id": "linux",
+          "nome": "Linux",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "terminal",
+            "permissões",
+            "processos"
+          ]
+        },
+        {
+          "id": "fundamentos",
+          "nome": "Fundamentos de segurança",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "tríade CIA",
+            "criptografia",
+            "autenticação",
+            "modelagem de ameaças"
+          ]
+        },
+        {
+          "id": "git",
+          "nome": "Git e GitHub",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 8,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Git",
+            "GitHub"
+          ]
+        },
+        {
+          "id": "scripts",
+          "nome": "Scripts de automação",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 18,
+          "pre_requisitos": [],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Python",
+            "Bash"
+          ]
+        },
+        {
+          "id": "owasp",
+          "nome": "Segurança de aplicações web",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [
+            "redes"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "OWASP Top 10",
+            "SQL injection",
+            "XSS",
+            "Burp Suite"
+          ]
+        },
+        {
+          "id": "ferramentas",
+          "nome": "Ferramentas de análise e pentest",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [
+            "redes",
+            "linux"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Nmap",
+            "Wireshark",
+            "Metasploit",
+            "Kali Linux"
+          ]
+        },
+        {
+          "id": "siem",
+          "nome": "Logs, monitoramento e SIEM",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "redes",
+            "linux"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Wazuh",
+            "Splunk",
+            "ELK"
+          ]
+        },
+        {
+          "id": "vulnerabilidades",
+          "nome": "Gestão de vulnerabilidades",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "fundamentos"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "CVE/CVSS",
+            "OpenVAS",
+            "Nessus"
+          ]
+        },
+        {
+          "id": "iam",
+          "nome": "Identidade e acesso",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "fundamentos"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "IAM",
+            "MFA",
+            "menor privilégio"
+          ]
+        },
+        {
+          "id": "incidentes",
+          "nome": "Resposta a incidentes",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "siem"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "NIST IR",
+            "forense básica"
+          ]
+        }
+      ],
+      "certificacoes": [
+        {
+          "nome": "ISC2 Certified in Cybersecurity (CC)",
+          "emissor": "ISC2",
+          "min_prontidao": 0.3,
+          "descricao": "Entrada na área, com exame gratuito em programas do ISC2."
+        },
+        {
+          "nome": "CompTIA Security+",
+          "emissor": "CompTIA",
+          "min_prontidao": 0.6,
+          "descricao": "Referência para vagas júnior de segurança."
+        },
+        {
+          "nome": "eJPT (Junior Penetration Tester)",
+          "emissor": "INE",
+          "min_prontidao": 0.7,
+          "descricao": "Prática de pentest em laboratório."
+        }
+      ],
+      "projetos": [
+        {
+          "nome": "Laboratório doméstico de segurança",
+          "dificuldade": 1,
+          "descricao": "VMs com Kali e alvos vulneráveis, documentando os ataques e as defesas.",
+          "habilidades": [
+            "linux",
+            "redes",
+            "ferramentas",
+            "fundamentos"
+          ]
+        },
+        {
+          "nome": "Writeups de desafios CTF",
+          "dificuldade": 2,
+          "descricao": "Resolva salas do TryHackMe/Hack The Box e publique relatórios didáticos no GitHub.",
+          "habilidades": [
+            "owasp",
+            "ferramentas",
+            "linux",
+            "redes"
+          ]
+        },
+        {
+          "nome": "Analisador de logs em Python",
+          "dificuldade": 3,
+          "descricao": "Detecta padrões suspeitos (força bruta, varreduras) em logs e gera alertas.",
+          "habilidades": [
+            "scripts",
+            "siem",
+            "incidentes",
+            "redes"
+          ]
+        }
+      ]
+    },
+    "devops_sre": {
+      "habilidades": [
+        {
+          "id": "linux",
+          "nome": "Linux e administração de sistemas",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 30,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "terminal",
+            "systemd",
+            "permissões",
+            "processos"
+          ]
+        },
+        {
+          "id": "redes",
+          "nome": "Redes",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "TCP/IP",
+            "DNS",
+            "HTTP",
+            "load balancers"
+          ]
+        },
+        {
+          "id": "git",
+          "nome": "Git e GitHub",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 10,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Git",
+            "GitHub",
+            "branches"
+          ]
+        },
+        {
+          "id": "scripts",
+          "nome": "Scripts de automação",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "linux"
+          ],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Bash",
+            "Python"
+          ]
+        },
+        {
+          "id": "docker",
+          "nome": "Contêineres",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "linux"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Docker",
+            "docker-compose"
+          ]
+        },
+        {
+          "id": "ci_cd",
+          "nome": "CI/CD",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "git",
+            "docker"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "GitHub Actions",
+            "GitLab CI",
+            "Jenkins"
+          ]
+        },
+        {
+          "id": "cloud",
+          "nome": "Nuvem pública",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 30,
+          "pre_requisitos": [
+            "linux",
+            "redes"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "AWS",
+            "Azure",
+            "GCP"
+          ]
+        },
+        {
+          "id": "iac",
+          "nome": "Infraestrutura como código",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [
+            "cloud"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Terraform",
+            "Ansible"
+          ]
+        },
+        {
+          "id": "kubernetes",
+          "nome": "Orquestração de contêineres",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 35,
+          "pre_requisitos": [
+            "docker"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "Kubernetes",
+            "Helm"
+          ]
+        },
+        {
+          "id": "observabilidade",
+          "nome": "Observabilidade",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "docker"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "Prometheus",
+            "Grafana",
+            "logs",
+            "SLI/SLO"
+          ]
+        },
+        {
+          "id": "incidentes",
+          "nome": "Resposta a incidentes e SRE",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "observabilidade"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "on-call",
+            "postmortem",
+            "SLO"
+          ]
+        }
+      ],
+      "certificacoes": [
+        {
+          "nome": "AWS Certified Cloud Practitioner",
+          "emissor": "AWS",
+          "min_prontidao": 0.3,
+          "descricao": "Fundamentos de nuvem."
+        },
+        {
+          "nome": "HashiCorp Certified: Terraform Associate",
+          "emissor": "HashiCorp",
+          "min_prontidao": 0.6,
+          "descricao": "Infraestrutura como código."
+        },
+        {
+          "nome": "Certified Kubernetes Administrator (CKA)",
+          "emissor": "Linux Foundation / CNCF",
+          "min_prontidao": 0.8,
+          "descricao": "Prova prática de Kubernetes; recomendada depois de ter base sólida."
+        }
+      ],
+      "projetos": [
+        {
+          "nome": "Pipeline CI/CD para uma aplicação em Docker",
+          "dificuldade": 1,
+          "descricao": "Build, testes e publicação da imagem automaticamente a cada commit.",
+          "habilidades": [
+            "git",
+            "docker",
+            "ci_cd",
+            "scripts"
+          ]
+        },
+        {
+          "nome": "Infraestrutura como código na nuvem",
+          "dificuldade": 2,
+          "descricao": "Terraform provisionando rede, VM e aplicação, com README de como reproduzir.",
+          "habilidades": [
+            "cloud",
+            "iac",
+            "linux",
+            "redes"
+          ]
+        },
+        {
+          "nome": "Stack de observabilidade com alertas",
+          "dificuldade": 3,
+          "descricao": "Prometheus e Grafana monitorando uma aplicação, com SLOs e alertas documentados.",
+          "habilidades": [
+            "observabilidade",
+            "docker",
+            "kubernetes",
+            "incidentes"
+          ]
+        }
+      ]
+    },
+    "cloud_architecture": {
+      "habilidades": [
+        {
+          "id": "redes",
+          "nome": "Redes de computadores",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "TCP/IP",
+            "DNS",
+            "sub-redes",
+            "VPN"
+          ]
+        },
+        {
+          "id": "linux",
+          "nome": "Linux",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "terminal",
+            "permissões"
+          ]
+        },
+        {
+          "id": "cloud",
+          "nome": "Serviços de nuvem pública",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 35,
+          "pre_requisitos": [
+            "redes"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "AWS",
+            "Azure",
+            "GCP",
+            "VPC",
+            "computação e armazenamento"
+          ]
+        },
+        {
+          "id": "seguranca_cloud",
+          "nome": "Segurança e IAM em nuvem",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "cloud"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "IAM",
+            "KMS",
+            "security groups"
+          ]
+        },
+        {
+          "id": "armazenamento",
+          "nome": "Armazenamento e bancos em nuvem",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "cloud"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "S3",
+            "RDS",
+            "DynamoDB"
+          ]
+        },
+        {
+          "id": "conteineres",
+          "nome": "Contêineres",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "linux"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Docker",
+            "ECS",
+            "Kubernetes"
+          ]
+        },
+        {
+          "id": "arquitetura",
+          "nome": "Padrões de arquitetura e escalabilidade",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 35,
+          "pre_requisitos": [
+            "cloud"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "microsserviços",
+            "filas e eventos",
+            "balanceamento",
+            "CDN"
+          ]
+        },
+        {
+          "id": "alta_disp",
+          "nome": "Alta disponibilidade e resiliência",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "arquitetura"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "multi-AZ",
+            "backup e DR",
+            "RTO/RPO"
+          ]
+        },
+        {
+          "id": "iac",
+          "nome": "Infraestrutura como código",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "cloud"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "Terraform",
+            "CloudFormation"
+          ]
+        },
+        {
+          "id": "custos",
+          "nome": "Custos (FinOps)",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 10,
+          "pre_requisitos": [
+            "cloud"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "Cost Explorer",
+            "tags de custo"
+          ]
+        }
+      ],
+      "certificacoes": [
+        {
+          "nome": "AWS Certified Cloud Practitioner",
+          "emissor": "AWS",
+          "min_prontidao": 0.3,
+          "descricao": "Fundamentos de nuvem."
+        },
+        {
+          "nome": "AWS Certified Solutions Architect - Associate",
+          "emissor": "AWS",
+          "min_prontidao": 0.6,
+          "descricao": "Principal certificação de arquitetura em AWS."
+        },
+        {
+          "nome": "Microsoft Azure Fundamentals (AZ-900)",
+          "emissor": "Microsoft",
+          "min_prontidao": 0.3,
+          "descricao": "Fundamentos de nuvem Azure."
+        }
+      ],
+      "projetos": [
+        {
+          "nome": "Aplicação web em três camadas na nuvem",
+          "dificuldade": 1,
+          "descricao": "Rede, servidor de aplicação e banco gerenciado, com diagrama e passo a passo de deploy.",
+          "habilidades": [
+            "cloud",
+            "redes",
+            "armazenamento",
+            "seguranca_cloud"
+          ]
+        },
+        {
+          "nome": "Aplicação serverless",
+          "dificuldade": 2,
+          "descricao": "Funções, API gateway e banco gerenciado, com permissões de menor privilégio.",
+          "habilidades": [
+            "cloud",
+            "arquitetura",
+            "seguranca_cloud",
+            "armazenamento"
+          ]
+        },
+        {
+          "nome": "Decisões de arquitetura e estimativa de custos",
+          "dificuldade": 3,
+          "descricao": "Documento com ADRs, diagrama, plano de resiliência e estimativa de custos de um sistema.",
+          "habilidades": [
+            "arquitetura",
+            "alta_disp",
+            "custos",
+            "iac"
+          ]
+        }
+      ]
+    },
+    "mobile": {
+      "habilidades": [
+        {
+          "id": "logica",
+          "nome": "Lógica de programação",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "algoritmos",
+            "orientação a objetos"
+          ]
+        },
+        {
+          "id": "git",
+          "nome": "Git e GitHub",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 8,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Git",
+            "GitHub"
+          ]
+        },
+        {
+          "id": "linguagem",
+          "nome": "Linguagem de desenvolvimento mobile",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 30,
+          "pre_requisitos": [
+            "logica"
+          ],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Kotlin",
+            "Swift",
+            "Dart",
+            "TypeScript"
+          ]
+        },
+        {
+          "id": "framework",
+          "nome": "Framework mobile",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 35,
+          "pre_requisitos": [
+            "linguagem"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Android (Jetpack Compose)",
+            "Flutter",
+            "React Native",
+            "SwiftUI"
+          ]
+        },
+        {
+          "id": "ui_mobile",
+          "nome": "Design de interfaces mobile",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Material Design",
+            "Human Interface Guidelines",
+            "navegação"
+          ]
+        },
+        {
+          "id": "apis",
+          "nome": "Consumo de APIs",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 18,
+          "pre_requisitos": [
+            "linguagem"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "REST",
+            "JSON",
+            "Retrofit",
+            "Dio",
+            "Axios"
+          ]
+        },
+        {
+          "id": "persistencia",
+          "nome": "Persistência local",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "linguagem"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "SQLite",
+            "Room",
+            "armazenamento de preferências"
+          ]
+        },
+        {
+          "id": "arquitetura_app",
+          "nome": "Arquitetura de apps",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "framework"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "MVVM",
+            "gerência de estado",
+            "injeção de dependência"
+          ]
+        },
+        {
+          "id": "testes",
+          "nome": "Testes em apps",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "framework"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "testes unitários",
+            "testes de interface"
+          ]
+        },
+        {
+          "id": "publicacao",
+          "nome": "Publicação nas lojas",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 10,
+          "pre_requisitos": [
+            "framework"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "Google Play Console",
+            "App Store Connect"
+          ]
+        }
+      ],
+      "certificacoes": [
+        {
+          "nome": "Meta Android Developer Professional Certificate",
+          "emissor": "Meta (Coursera)",
+          "min_prontidao": 0.4,
+          "descricao": "Trilha de desenvolvimento Android."
+        },
+        {
+          "nome": "Meta iOS Developer Professional Certificate",
+          "emissor": "Meta (Coursera)",
+          "min_prontidao": 0.4,
+          "descricao": "Trilha de desenvolvimento iOS."
+        },
+        {
+          "nome": "Meta React Native Specialization",
+          "emissor": "Meta (Coursera)",
+          "min_prontidao": 0.5,
+          "descricao": "App multiplataforma com React Native."
+        }
+      ],
+      "projetos": [
+        {
+          "nome": "App de tarefas com persistência local",
+          "dificuldade": 1,
+          "descricao": "Telas de lista e cadastro, dados guardados no aparelho e navegação entre telas.",
+          "habilidades": [
+            "linguagem",
+            "framework",
+            "persistencia",
+            "ui_mobile"
+          ]
+        },
+        {
+          "nome": "App que consome uma API pública",
+          "dificuldade": 2,
+          "descricao": "Lista, detalhe, busca e tratamento de erros e de falta de conexão.",
+          "habilidades": [
+            "apis",
+            "framework",
+            "ui_mobile",
+            "linguagem"
+          ]
+        },
+        {
+          "nome": "App com autenticação e arquitetura em camadas",
+          "dificuldade": 3,
+          "descricao": "Login, arquitetura MVVM, testes e APK ou build de teste publicado.",
+          "habilidades": [
+            "arquitetura_app",
+            "testes",
+            "publicacao",
+            "apis"
+          ]
+        }
+      ]
+    },
+    "qa": {
+      "habilidades": [
+        {
+          "id": "fundamentos",
+          "nome": "Fundamentos de teste de software",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "níveis e tipos de teste",
+            "ISTQB"
+          ]
+        },
+        {
+          "id": "casos",
+          "nome": "Projeto de casos de teste",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "fundamentos"
+          ],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "partição de equivalência",
+            "valor limite",
+            "BDD/Gherkin"
+          ]
+        },
+        {
+          "id": "ageis",
+          "nome": "Métodos ágeis",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 10,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Scrum",
+            "Kanban"
+          ]
+        },
+        {
+          "id": "git",
+          "nome": "Git e GitHub",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 8,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Git",
+            "GitHub"
+          ]
+        },
+        {
+          "id": "bugs",
+          "nome": "Registro e acompanhamento de defeitos",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 10,
+          "pre_requisitos": [
+            "fundamentos"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Jira",
+            "relato de bugs"
+          ]
+        },
+        {
+          "id": "sql",
+          "nome": "SQL para validação de dados",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "SQL",
+            "consultas de verificação"
+          ]
+        },
+        {
+          "id": "api",
+          "nome": "Testes de API",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 18,
+          "pre_requisitos": [
+            "fundamentos"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Postman",
+            "REST",
+            "pytest/requests"
+          ]
+        },
+        {
+          "id": "script",
+          "nome": "Linguagem para automação",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 25,
+          "pre_requisitos": [],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "Python",
+            "JavaScript/TypeScript"
+          ]
+        },
+        {
+          "id": "automacao",
+          "nome": "Automação de testes de interface",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 30,
+          "pre_requisitos": [
+            "script",
+            "fundamentos"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "Playwright",
+            "Cypress",
+            "Selenium"
+          ]
+        },
+        {
+          "id": "ci",
+          "nome": "Testes na integração contínua",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 12,
+          "pre_requisitos": [
+            "git",
+            "automacao"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "GitHub Actions",
+            "relatórios de teste"
+          ]
+        },
+        {
+          "id": "performance",
+          "nome": "Testes de desempenho",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "api"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "k6",
+            "JMeter"
+          ]
+        }
+      ],
+      "certificacoes": [
+        {
+          "nome": "ISTQB Certified Tester - Foundation Level (CTFL)",
+          "emissor": "ISTQB / BSTQB",
+          "min_prontidao": 0.4,
+          "descricao": "Certificação mais reconhecida para entrada em QA."
+        },
+        {
+          "nome": "ISTQB Agile Tester (CTFL-AT)",
+          "emissor": "ISTQB / BSTQB",
+          "min_prontidao": 0.6,
+          "descricao": "Testes em times ágeis."
+        },
+        {
+          "nome": "ISTQB Test Automation Engineer (CTAL-TAE)",
+          "emissor": "ISTQB / BSTQB",
+          "min_prontidao": 0.8,
+          "descricao": "Estratégia de automação; exige experiência prática."
+        }
+      ],
+      "projetos": [
+        {
+          "nome": "Plano e casos de teste de um app real",
+          "dificuldade": 1,
+          "descricao": "Documente cenários, casos e bugs encontrados em um aplicativo ou site público.",
+          "habilidades": [
+            "fundamentos",
+            "casos",
+            "bugs",
+            "ageis"
+          ]
+        },
+        {
+          "nome": "Testes de API com relatório",
+          "dificuldade": 2,
+          "descricao": "Coleção Postman ou testes em pytest com validações e relatório de resultados.",
+          "habilidades": [
+            "api",
+            "script",
+            "bugs",
+            "sql"
+          ]
+        },
+        {
+          "nome": "Suíte E2E automatizada com CI",
+          "dificuldade": 3,
+          "descricao": "Testes Playwright/Cypress em um repositório público, executados a cada commit.",
+          "habilidades": [
+            "automacao",
+            "script",
+            "ci",
+            "git"
+          ]
+        }
+      ]
+    },
+    "product_management": {
+      "habilidades": [
+        {
+          "id": "discovery",
+          "nome": "Descoberta de produto e pesquisa com usuários",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "entrevistas",
+            "personas",
+            "Jobs to be Done"
+          ]
+        },
+        {
+          "id": "negocio",
+          "nome": "Modelo de negócio e mercado",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Business Model Canvas",
+            "unit economics"
+          ]
+        },
+        {
+          "id": "ageis",
+          "nome": "Métodos ágeis",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "Scrum",
+            "Kanban",
+            "papel de Product Owner"
+          ]
+        },
+        {
+          "id": "comunicacao",
+          "nome": "Comunicação e stakeholders",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [],
+          "bloco": "fundamentos",
+          "tecnologias": [
+            "storytelling",
+            "alinhamento",
+            "apresentações"
+          ]
+        },
+        {
+          "id": "priorizacao",
+          "nome": "Priorização",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "discovery"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "RICE",
+            "MoSCoW",
+            "Kano"
+          ]
+        },
+        {
+          "id": "backlog",
+          "nome": "Backlog e histórias de usuário",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "ageis"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "user stories",
+            "critérios de aceite",
+            "Jira",
+            "Trello"
+          ]
+        },
+        {
+          "id": "metricas",
+          "nome": "Métricas de produto",
+          "prioridade": "essencial",
+          "nivel_junior": 2,
+          "horas_por_nivel": 20,
+          "pre_requisitos": [
+            "negocio"
+          ],
+          "bloco": "ferramentas",
+          "tecnologias": [
+            "North Star",
+            "funil AARRR",
+            "testes A/B"
+          ]
+        },
+        {
+          "id": "roadmap",
+          "nome": "Roadmap de produto",
+          "prioridade": "importante",
+          "nivel_junior": 2,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "priorizacao"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "Now-Next-Later",
+            "OKRs"
+          ]
+        },
+        {
+          "id": "ux",
+          "nome": "Noções de UX",
+          "prioridade": "importante",
+          "nivel_junior": 1,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "discovery"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "wireframes",
+            "testes de usabilidade"
+          ]
+        },
+        {
+          "id": "sql",
+          "nome": "SQL para análise",
+          "prioridade": "desejavel",
+          "nivel_junior": 1,
+          "horas_por_nivel": 15,
+          "pre_requisitos": [
+            "metricas"
+          ],
+          "bloco": "pratica",
+          "tecnologias": [
+            "SQL",
+            "Metabase",
+            "Looker Studio"
+          ]
+        }
+      ],
+      "certificacoes": [
+        {
+          "nome": "Google Project Management Professional Certificate",
+          "emissor": "Google (Coursera)",
+          "min_prontidao": 0.2,
+          "descricao": "Gestão de projetos e métodos ágeis."
+        },
+        {
+          "nome": "Professional Scrum Product Owner I (PSPO I)",
+          "emissor": "Scrum.org",
+          "min_prontidao": 0.5,
+          "descricao": "Referência para o papel de Product Owner."
+        },
+        {
+          "nome": "Certified Scrum Product Owner (CSPO)",
+          "emissor": "Scrum Alliance",
+          "min_prontidao": 0.5,
+          "descricao": "Curso e certificação de PO."
+        }
+      ],
+      "projetos": [
+        {
+          "nome": "Documento de produto de uma ideia",
+          "dificuldade": 1,
+          "descricao": "Problema, personas, entrevistas, hipóteses e escopo de um MVP, em um repositório público.",
+          "habilidades": [
+            "discovery",
+            "negocio",
+            "comunicacao",
+            "backlog"
+          ]
+        },
+        {
+          "nome": "Backlog e roadmap priorizados de um app existente",
+          "dificuldade": 2,
+          "descricao": "Histórias de usuário, priorização RICE e roadmap justificado por métricas.",
+          "habilidades": [
+            "priorizacao",
+            "backlog",
+            "roadmap",
+            "metricas"
+          ]
+        },
+        {
+          "nome": "Protótipo com teste de usabilidade",
+          "dificuldade": 3,
+          "descricao": "Fluxo prototipado, teste com usuários reais e relatório de aprendizados.",
+          "habilidades": [
+            "ux",
+            "discovery",
+            "metricas",
+            "comunicacao"
+          ]
+        }
+      ]
+    }
+  }
+}

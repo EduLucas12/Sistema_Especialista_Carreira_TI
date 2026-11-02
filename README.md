@@ -14,13 +14,14 @@ recomenda um **Top 3** entre 10 trilhas de TI, identifica **gaps** de competênc
 | Memória de Trabalho (respostas da sessão) | `carreiras/motor_inferencia.py` |
 | Motor de Inferência (pontuação ponderada + regras) | `carreiras/motor_inferencia.py` |
 | Explicador (por que / como) | `carreiras/motor_inferencia.py` |
+| Gaps, roadmap, certificações e projetos | `carreiras/gaps_roadmap.py` + `data/habilidades_roadmap.json` |
 | Interface com o usuário (Streamlit, wizard) | Fase 4 |
 
 ## Fases
 
 - [x] **Fase 1 — Engenharia do Conhecimento e modelagem JSON** (`docs/fase1_engenharia_conhecimento.md`)
 - [x] **Fase 2 — Motor de Inferência com pontuação** (`docs/fase2_motor_inferencia.md`)
-- [ ] Fase 3 — Gaps e Roadmap
+- [x] **Fase 3 — Gaps e Roadmap** (`docs/fase3_gaps_roadmap.md`)
 - [ ] Fase 4 — Interface Streamlit
 - [ ] Fase 5 — Testes de robustez e casos limite
 
@@ -31,8 +32,9 @@ python -m venv .venv
 .venv\Scripts\activate          # Windows  (Linux/Mac: source .venv/bin/activate)
 pip install -r requirements.txt
 python scripts/inspecionar_base.py   # valida a base e mostra a matriz de pesos
-pytest                               # testes (base de conhecimento + motor)
-python main.py --exemplo dados       # Top 3 de um perfil de exemplo (ou: python main.py)
+pytest                               # testes (base, motor, gaps e roadmap)
+python main.py --exemplo dados       # Top 3 + plano de estudos de um perfil de exemplo
+python main.py                       # consulta interativa completa
 ```
 
 No PyCharm: *File → Open* na pasta do projeto, configure o interpretador (`.venv`) e marque a pasta raiz como
@@ -41,9 +43,9 @@ No PyCharm: *File → Open* na pasta do projeto, configure o interpretador (`.ve
 ## Estrutura
 
 ```
-carreiras/            pacote Python (loader/validador da base + motor de inferência)
+carreiras/            pacote Python (base, motor de inferência, gaps e roadmap)
 main.py               consulta no terminal (a interface Streamlit vem na Fase 4)
-data/                 regras_carreiras.json (conhecimento fora do código)
+data/                 regras_carreiras.json e habilidades_roadmap.json (conhecimento fora do código)
 docs/                 documentação por fase
 scripts/              utilitários (inspeção da base)
 tests/                testes automatizados
