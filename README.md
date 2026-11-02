@@ -15,14 +15,14 @@ recomenda um **Top 3** entre 10 trilhas de TI, identifica **gaps** de competênc
 | Motor de Inferência (pontuação ponderada + regras) | `carreiras/motor_inferencia.py` |
 | Explicador (por que / como) | `carreiras/motor_inferencia.py` |
 | Gaps, roadmap, certificações e projetos | `carreiras/gaps_roadmap.py` + `data/habilidades_roadmap.json` |
-| Interface com o usuário (Streamlit, wizard) | Fase 4 |
+| Interface com o usuário (Streamlit, wizard) | `app.py` + `carreiras/visualizacao.py` |
 
 ## Fases
 
 - [x] **Fase 1 — Engenharia do Conhecimento e modelagem JSON** (`docs/fase1_engenharia_conhecimento.md`)
 - [x] **Fase 2 — Motor de Inferência com pontuação** (`docs/fase2_motor_inferencia.md`)
 - [x] **Fase 3 — Gaps e Roadmap** (`docs/fase3_gaps_roadmap.md`)
-- [ ] Fase 4 — Interface Streamlit
+- [x] **Fase 4 — Interface Streamlit** (`docs/fase4_interface_streamlit.md`)
 - [ ] Fase 5 — Testes de robustez e casos limite
 
 ## Como rodar (PyCharm / terminal)
@@ -34,7 +34,8 @@ pip install -r requirements.txt
 python scripts/inspecionar_base.py   # valida a base e mostra a matriz de pesos
 pytest                               # testes (base, motor, gaps e roadmap)
 python main.py --exemplo dados       # Top 3 + plano de estudos de um perfil de exemplo
-python main.py                       # consulta interativa completa
+python main.py                       # consulta interativa completa no terminal
+streamlit run app.py                 # interface web em etapas (wizard)
 ```
 
 No PyCharm: *File → Open* na pasta do projeto, configure o interpretador (`.venv`) e marque a pasta raiz como
@@ -44,7 +45,8 @@ No PyCharm: *File → Open* na pasta do projeto, configure o interpretador (`.ve
 
 ```
 carreiras/            pacote Python (base, motor de inferência, gaps e roadmap)
-main.py               consulta no terminal (a interface Streamlit vem na Fase 4)
+app.py                interface Streamlit (wizard em etapas)
+main.py               consulta no terminal
 data/                 regras_carreiras.json e habilidades_roadmap.json (conhecimento fora do código)
 docs/                 documentação por fase
 scripts/              utilitários (inspeção da base)
