@@ -21,6 +21,7 @@ from dataclasses import dataclass, field
 from .base_conhecimento import BaseConhecimento, Regra, carregar_base
 
 NEUTRO = 0.5  # valor normalizado atribuído a perguntas não respondidas
+PESO_MIN_EXPLICACAO = 3.0  # fatores com peso efetivo menor que isso não são citados na explicação
 
 _OPS = {"<=": operator.le, ">=": operator.ge, "<": operator.lt,
         ">": operator.gt, "==": operator.eq, "!=": operator.ne}
@@ -102,6 +103,42 @@ class ResultadoInferencia:
     ranking: tuple[ResultadoTrilha, ...]   # todas as trilhas, da melhor para a pior
     top: tuple[ResultadoTrilha, ...]       # Top N
     empates_parciais: tuple[tuple[str, str], ...]  # pares consecutivos no Top N+1 com diferença <= limiar
+    respondidas: int = 0
+    total_perguntas: int = 0
+    limiar_indefinido: float = 0.10        # fração (10 p.p.)
+    cobertura_minima: float = 0.5
+
+    @property
+    def diferenciacao(self) -> float:
+        """Distância (0..1) entre a trilha mais e a menos compatível."""
+        return self.ranking[0].compatibilidade - self.ranking[-1].compatibilidade
+
+    @property
+    def perfil_indefinido(self) -> bool:
+        """Respostas que quase não diferenciam as trilhas (ex.: tudo neutro, tudo 5, tudo 1)."""
+        return self.diferenciacao < self.limiar_indefinido
+
+    @property
+    def cobertura(self) -> float:
+        return self.respondidas / self.total_perguntas if self.total_perguntas else 1.0
+
+    @property
+    def poucas_respostas(self) -> bool:
+        return self.cobertura < self.cobertura_minima
+
+    @property
+    def avisos(self) -> tuple[str, ...]:
+        """Alertas de confiabilidade que a interface e os relatórios devem exibir."""
+        out = []
+        if self.perfil_indefinido:
+            out.append(f"Suas respostas quase não diferenciam as trilhas (diferença de apenas "
+                       f"{self.diferenciacao * 100:.1f} p.p. entre a mais e a menos compatível). "
+                       "O ranking é pouco confiável: tente responder com mais contraste entre o que "
+                       "você gosta e o que não gosta.")
+        if self.poucas_respostas:
+            out.append(f"Apenas {self.respondidas} de {self.total_perguntas} perguntas foram respondidas; "
+                       "as demais foram tratadas como neutras.")
+        return tuple(out)
 
     def por_id(self, trilha_id: str) -> ResultadoTrilha:
         return next(r for r in self.ranking if r.trilha_id == trilha_id)
@@ -133,7 +170,12 @@ class MotorInferencia:
             for a, b in zip(considerados, considerados[1:])
             if a.compatibilidade - b.compatibilidade <= limiar + 1e-12
         )
-        return ResultadoInferencia(tuple(resultados), tuple(resultados[:top_n]), empates)
+        pont = self.base.pontuacao
+        return ResultadoInferencia(
+            tuple(resultados), tuple(resultados[:top_n]), empates,
+            respondidas=len(memoria.respostas), total_perguntas=len(self.base.perguntas),
+            limiar_indefinido=pont.get("limiar_perfil_indefinido_pontos_percentuais", 10.0) / 100,
+            cobertura_minima=pont.get("cobertura_minima", 0.5))
 
     # --- Passos internos ------------------------------------------------- #
     def _peso_etapa(self, pergunta_id: str) -> float:
@@ -188,21 +230,25 @@ class MotorInferencia:
         """Responde "por quê?" e "como?": fatos que mais ajudaram, o que faltou e regras acionadas."""
         linhas = [f"{resultado.nome}: {resultado.percentual:.1f}% "
                   f"(base {resultado.base * 100:.1f}% {resultado.ajuste * 100:+.1f} p.p. das regras)"]
-        fortes = sorted((c for c in resultado.contribuicoes if c.normalizada >= 0.5),
-                        key=lambda c: -c.pontos)[:n_destaques]
+        relevantes = [c for c in resultado.contribuicoes if c.peso_efetivo >= PESO_MIN_EXPLICACAO]
+        # "A favor" = resposta acima do neutro; "Contra" = abaixo; respostas neutras não são citadas.
+        fortes = sorted((c for c in relevantes if c.normalizada > NEUTRO),
+                        key=lambda c: -c.peso_efetivo * (c.normalizada - NEUTRO))[:n_destaques]
         if fortes:
             linhas.append("  A favor: " + "; ".join(f"{c.rotulo} (resposta {c.resposta}/{self.base.escala_max})" for c in fortes))
-        fracos = sorted((c for c in resultado.contribuicoes if c.normalizada < 0.5),
-                        key=lambda c: -c.perda)[:n_destaques]
+        fracos = sorted((c for c in relevantes if c.normalizada < NEUTRO),
+                        key=lambda c: -c.peso_efetivo * (NEUTRO - c.normalizada))[:n_destaques]
         if fracos:
             linhas.append("  Contra: " + "; ".join(f"{c.rotulo} (resposta {c.resposta}/{self.base.escala_max})" for c in fracos))
+        if not fortes and not fracos and not resultado.regras_ativas:
+            linhas.append("  Sem fator determinante: as respostas relevantes para esta trilha foram neutras.")
         for r in resultado.regras_ativas:
             rot = "Penalidade" if r.tipo == "penalidade" else "Bônus"
             linhas.append(f"  {rot} {r.id} ({r.ajuste * 100:+.0f} p.p.): {r.descricao}")
         return "\n".join(linhas)
 
     def relatorio(self, resultado: ResultadoInferencia) -> str:
-        blocos = []
+        blocos = [f"Aviso: {a}" for a in resultado.avisos]
         for i, r in enumerate(resultado.top, 1):
             blocos.append(f"{i}º {self.explicar(r)}")
         if resultado.empates_parciais:

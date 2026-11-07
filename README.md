@@ -23,7 +23,7 @@ recomenda um **Top 3** entre 10 trilhas de TI, identifica **gaps** de competênc
 - [x] **Fase 2 — Motor de Inferência com pontuação** (`docs/fase2_motor_inferencia.md`)
 - [x] **Fase 3 — Gaps e Roadmap** (`docs/fase3_gaps_roadmap.md`)
 - [x] **Fase 4 — Interface Streamlit** (`docs/fase4_interface_streamlit.md`)
-- [ ] Fase 5 — Testes de robustez e casos limite
+- [x] **Fase 5 — Testes de robustez e casos limite** (`docs/fase5_testes_robustez.md`)
 
 ## Como rodar (PyCharm / terminal)
 
@@ -32,7 +32,8 @@ python -m venv .venv
 .venv\Scripts\activate          # Windows  (Linux/Mac: source .venv/bin/activate)
 pip install -r requirements.txt
 python scripts/inspecionar_base.py   # valida a base e mostra a matriz de pesos
-pytest                               # testes (base, motor, gaps e roadmap)
+pytest                               # 161 testes (base, motor, gaps, interface e robustez)
+python scripts/casos_limite.py       # cenários limite/ambíguos em tabela
 python main.py --exemplo dados       # Top 3 + plano de estudos de um perfil de exemplo
 python main.py                       # consulta interativa completa no terminal
 streamlit run app.py                 # interface web em etapas (wizard)

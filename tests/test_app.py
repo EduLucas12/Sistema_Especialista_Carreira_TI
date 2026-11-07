@@ -123,3 +123,75 @@ def test_nova_consulta_reinicia():
     clicar(at, "btn_recomecar")
     assert at.session_state["passo"] == 1
     assert at.session_state["dados"]["respostas"] == {}
+
+
+# ---------------- Fase 5: casos limite da interface ----------------
+def test_perfil_neutro_mostra_aviso_de_indefinicao():
+    at = consulta_completa({})  # tudo 3
+    assert at.session_state["passo"] == 4
+    assert any("não diferenciam" in w.value for w in at.warning)
+
+
+def test_perfil_bem_definido_nao_mostra_aviso_de_indefinicao():
+    at = consulta_completa({"mobile": 5, "programacao": 5, "design_visual": 5, "experiencia_usuario": 5})
+    assert not any("não diferenciam" in w.value for w in at.warning)
+
+
+@pytest.mark.parametrize("nome", ["", "   ", "**negrito**", "<b>html</b>", "# título", "Ñandú ção 😀", "x" * 300])
+def test_nomes_estranhos_nao_quebram_o_app(nome):
+    at = novo_app()
+    passo1(at, nome=nome)
+    responder(at, "afinidades", {"mobile": 5})
+    clicar(at, "btn_avancar")
+    responder(at, "objetivos", {})
+    clicar(at, "btn_avancar")
+    assert at.session_state["passo"] == 4 and not at.exception
+
+
+@pytest.mark.parametrize("horas", [1.0, 60.0])
+def test_horas_nos_limites(horas):
+    at = consulta_completa({"mobile": 5})
+    assert not at.exception
+    novo = novo_app()
+    passo1(novo, horas=horas)
+    assert novo.session_state["passo"] == 2 and novo.session_state["dados"]["horas"] == horas
+
+
+def test_trocar_de_trilha_varias_vezes_e_voltar_ao_resultado():
+    at = consulta_completa({"infraestrutura": 5, "automacao": 5})
+    for tid in ("backend", "qa", "product_management", "devops_sre", "mobile"):
+        at.selectbox("w_trilha").set_value(tid)
+        at.run()
+        assert not at.exception and at.session_state["dados"]["trilha"] == tid
+    clicar(at, "btn_voltar")
+    assert at.session_state["passo"] == 3
+    clicar(at, "btn_avancar")
+    assert at.session_state["passo"] == 4 and at.selectbox("w_trilha").value == "mobile"
+
+
+def test_avaliacao_de_uma_trilha_nao_vaza_para_outra():
+    at = consulta_completa({"infraestrutura": 5, "automacao": 5})
+    at.selectbox("w_trilha").set_value("backend")
+    at.run()
+    at.selectbox("w_av_backend_git").set_value(2)
+    at.run()
+    at.selectbox("w_trilha").set_value("qa")
+    at.run()
+    av = at.session_state["dados"]["avaliacao"]
+    assert av["backend"] == {"git": 2} and av["qa"] == {}
+
+
+def test_base_corrompida_mostra_erro_legivel(monkeypatch):
+    import streamlit as st
+    import carreiras.base_conhecimento as bc
+
+    def quebrada(*a, **k):
+        raise bc.BaseInvalidaError("arquivo de teste inválido")
+
+    st.cache_resource.clear()
+    monkeypatch.setattr(bc, "carregar_base", quebrada)
+    at = AppTest.from_file(APP, default_timeout=30)
+    at.run()
+    assert not at.exception
+    assert any("Não foi possível carregar" in e.value and "arquivo de teste inválido" in e.value for e in at.error)
+    st.cache_resource.clear()

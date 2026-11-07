@@ -16,8 +16,11 @@ def _tabela(cabecalho: list[str], linhas: list[list[str]]) -> str:
 def relatorio_markdown(motor: MotorInferencia, resultado: ResultadoInferencia, plano: PlanoCarreira,
                        nome: str | None = None) -> str:
     a, r = plano.analise, plano.roadmap
+    nome = " ".join(nome.split())[:60] if nome else None  # sem quebras de linha: não "quebra" o título
     titulo = f"# Plano de carreira em TI{f' - {nome}' if nome else ''}"
-    partes = [titulo, "", "## Ranking de compatibilidade (Top 3)", ""]
+    partes = [titulo, ""]
+    partes += [f"> **Aviso:** {aviso}" for aviso in resultado.avisos] + ([""] if resultado.avisos else [])
+    partes += ["## Ranking de compatibilidade (Top 3)", ""]
     partes.append(_tabela(["Posição", "Trilha", "Compatibilidade"],
                           [[i, t.nome, f"{t.percentual:.1f}%"] for i, t in enumerate(resultado.top, 1)]))
     if resultado.empates_parciais:

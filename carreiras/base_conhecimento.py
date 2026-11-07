@@ -74,12 +74,27 @@ def _erro(msg: str) -> None:
 
 def carregar_base(caminho: str | Path = CAMINHO_PADRAO) -> BaseConhecimento:
     """Lê o JSON, valida e devolve a base. Levanta BaseInvalidaError se houver problema."""
-    with open(caminho, encoding="utf-8") as f:
-        bruto = json.load(f)
+    try:
+        with open(caminho, encoding="utf-8") as f:
+            bruto = json.load(f)
+    except FileNotFoundError as e:
+        raise BaseInvalidaError(f"Arquivo da base de conhecimento não encontrado: {caminho}") from e
+    except json.JSONDecodeError as e:
+        raise BaseInvalidaError(f"JSON inválido em {caminho}: {e}") from e
     return validar_e_construir(bruto)
 
 
 def validar_e_construir(bruto: dict) -> BaseConhecimento:
+    """Valida o dicionário lido do JSON. Qualquer campo ausente ou de tipo errado vira BaseInvalidaError."""
+    try:
+        return _validar_e_construir(bruto)
+    except (KeyError, TypeError, AttributeError, ValueError) as e:
+        if isinstance(e, BaseInvalidaError):
+            raise
+        raise BaseInvalidaError(f"Base de conhecimento malformada ({type(e).__name__}: {e})") from e
+
+
+def _validar_e_construir(bruto: dict) -> BaseConhecimento:
     for chave in ("metadados", "escala_likert", "etapas", "perfil", "pontuacao",
                   "perguntas", "trilhas", "regras"):
         if chave not in bruto:

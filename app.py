@@ -7,8 +7,8 @@ Toda a lógica (inferência, gaps, roadmap) fica em `carreiras/`; este arquivo s
 """
 import streamlit as st
 
-from carreiras.base_conhecimento import carregar_base
-from carreiras.gaps_roadmap import ConsultorGaps, PerfilUsuario
+from carreiras.base_conhecimento import BaseInvalidaError, carregar_base
+from carreiras.gaps_roadmap import ConsultorGaps, HabilidadesInvalidasError, PerfilUsuario
 from carreiras.motor_inferencia import MemoriaTrabalho, MotorInferencia
 from carreiras.relatorio import relatorio_markdown
 from carreiras import visualizacao as viz
@@ -25,6 +25,15 @@ PASSOS = ["perfil", "afinidades", "objetivos", "resultado"]
 def carregar_sistema():
     base = carregar_base()
     return base, MotorInferencia(base), ConsultorGaps(base=base)
+
+
+def carregar_ou_parar():
+    """Mostra um erro legível (em vez de um traceback) se os JSONs da base estiverem inválidos."""
+    try:
+        return carregar_sistema()
+    except (BaseInvalidaError, HabilidadesInvalidasError) as e:
+        st.error(f"Não foi possível carregar a base de conhecimento: {e}")
+        st.stop()
 
 
 def estado() -> dict:
@@ -138,6 +147,8 @@ def passo_resultado(base, motor: MotorInferencia, consultor: ConsultorGaps, dado
     nome = (dados["nome"] or "").strip()
     st.subheader(f"Resultado{f' de {nome}' if nome else ''}")
 
+    for aviso in resultado.avisos:
+        st.warning(aviso)
     cols = st.columns(len(resultado.top))
     for i, (col, r) in enumerate(zip(cols, resultado.top), 1):
         col.metric(f"{i}º lugar: {r.nome}", f"{r.percentual:.1f}%", help="Compatibilidade com o seu perfil")
@@ -241,7 +252,7 @@ def plano_de_acao(base, motor, consultor: ConsultorGaps, dados: dict, resultado)
 
 # --------------------------------------------------------------------------- #
 def main() -> None:
-    base, motor, consultor = carregar_sistema()
+    base, motor, consultor = carregar_ou_parar()
     dados = estado()
     passo = st.session_state["passo"]
     cabecalho(base, passo)

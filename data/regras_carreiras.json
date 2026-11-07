@@ -76,7 +76,9 @@
     "formula": "compatibilidade(trilha) = clamp( soma(peso_pergunta * peso_etapa * (resposta-min)/(max-min)) / soma(peso_pergunta * peso_etapa) + soma(ajustes das regras ativas), 0, 1 )",
     "top_n": 3,
     "ajuste_maximo_total": 0.5,
-    "limiar_empate_pontos_percentuais": 2.0
+    "limiar_empate_pontos_percentuais": 2.0,
+    "limiar_perfil_indefinido_pontos_percentuais": 10.0,
+    "cobertura_minima": 0.5
   },
   "perguntas": [
     {

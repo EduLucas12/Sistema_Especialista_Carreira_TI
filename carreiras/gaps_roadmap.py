@@ -88,12 +88,27 @@ def _erro(msg: str) -> None:
 
 def carregar_habilidades(caminho: str | Path = CAMINHO_HABILIDADES,
                          base: BaseConhecimento | None = None) -> BaseHabilidades:
-    with open(caminho, encoding="utf-8") as f:
-        bruto = json.load(f)
+    try:
+        with open(caminho, encoding="utf-8") as f:
+            bruto = json.load(f)
+    except FileNotFoundError as e:
+        raise HabilidadesInvalidasError(f"Arquivo de habilidades não encontrado: {caminho}") from e
+    except json.JSONDecodeError as e:
+        raise HabilidadesInvalidasError(f"JSON inválido em {caminho}: {e}") from e
     return validar_habilidades(bruto, base or carregar_base())
 
 
 def validar_habilidades(bruto: dict, base: BaseConhecimento) -> BaseHabilidades:
+    """Qualquer campo ausente ou de tipo errado vira HabilidadesInvalidasError."""
+    try:
+        return _validar_habilidades(bruto, base)
+    except (KeyError, TypeError, AttributeError, ValueError) as e:
+        if isinstance(e, HabilidadesInvalidasError):
+            raise
+        raise HabilidadesInvalidasError(f"Base de habilidades malformada ({type(e).__name__}: {e})") from e
+
+
+def _validar_habilidades(bruto: dict, base: BaseConhecimento) -> BaseHabilidades:
     pesos = dict(bruto["prioridades"])
     blocos = tuple(b["id"] for b in bruto["blocos"])
     idx_bloco = {b: i for i, b in enumerate(blocos)}
